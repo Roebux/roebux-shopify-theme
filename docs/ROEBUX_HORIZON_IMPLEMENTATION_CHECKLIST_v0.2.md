@@ -1,13 +1,47 @@
-# RoeBux — Shopify Dawn Implementation Checklist
+# RoeBux — Shopify Theme Implementation Checklist
 
-Version: v0.2 (pre-code) · Status: approved strategic direction, awaiting go-ahead to code
+Version: v0.2.1 · Status: approved strategic direction; Phase 0/1 in progress
+Theme base: **Shopify Horizon v3.5.1** (not Dawn). See §0a — confirmed 2026-06-08.
 Changes in v0.2: brand-first reframing — conversion guidance is now directional, not a hard requirement. See §A.
+Changes in v0.2.1: theme base corrected from Dawn to Horizon; §1 file inventory superseded by §0a mapping.
 Brand spelling: **RoeBux** (canonical, everywhere)
 Entity: Essens Engineering B.V. · Footer line: "RoeBux is operated by Essens Engineering B.V."
 
 > This is a build checklist, not a spec freeze. Items marked **TBD** must be confirmed before launch.
 > All legal copy is placeholder and marked **REQUIRES LEGAL REVIEW**.
-> Native-first: prefer Shopify/Dawn built-ins; no apps unless there is a strong reason.
+> Native-first: prefer Shopify/Horizon built-ins; no apps unless there is a strong reason.
+
+---
+
+## 0a. Theme base correction (v0.2.1 — confirmed decision)
+
+**The repository theme is Shopify Horizon v3.5.1, not Dawn.** The original docs specified Dawn as a hard constraint, but the committed theme (mislabeled "Dawn base theme" in git) is Horizon — Shopify's current flagship and Dawn's successor. Confirmed direction (2026-06-08): **build on Horizon, keep everything native and editable.** Horizon satisfies every technical constraint (pure Liquid + JSON + sections/blocks + theme settings + CSS, fully theme-editor editable, no frameworks/build step); only the literal word "Dawn" changes.
+
+**What this changes:**
+- Horizon is **block-first**. Page content is composed from *theme blocks* (`blocks/*.liquid`, ~90 of them) configured via the theme editor and stored in `templates/*.json` and `sections/*-group.json`. Favor configuring blocks/sections over authoring new Liquid.
+- The **§1 file/section inventory below is written for Dawn and is superseded.** Use the mapping table here; per-phase Horizon file references will be confirmed at the start of each phase rather than locked now (so Dawn assumptions don't harden into requirements).
+- **Transparent + sticky header is native in Horizon** (`sections/header.liquid` settings: `enable_transparent_header_home/_product/_collection`, `color_scheme_transparent`, `enable_sticky_header`). The "most custom part of Dawn" risk is largely retired — it's a settings + color-scheme exercise.
+
+**Dawn → Horizon mapping (for the sections this build uses):**
+
+| Checklist (Dawn) reference | Horizon equivalent |
+|---|---|
+| `sections/header.liquid` + `snippets/header-drawer.liquid` | `sections/header.liquid` + `sections/header-group.json` (logo/menu/search/account are theme blocks; drawer is native) |
+| `sections/footer.liquid` | `sections/footer.liquid` + `sections/footer-utilities.liquid` + `sections/footer-group.json` (blocks: menu, text, social-links, email-signup, payment-icons, policy-list) |
+| `assets/base.css` link in `layout/theme.liquid` | `snippets/stylesheets.liquid` (links `base.css`; `roebux.css` linked here) |
+| Hero: `sections/image-banner.liquid` / `video.liquid` | `sections/hero.liquid` (+ `layered-slideshow.liquid`, `media-with-content.liquid`) |
+| `sections/rich-text.liquid` | text blocks inside a `section.liquid` group (rich-text block) |
+| `sections/multicolumn.liquid` / `collage.liquid` | `section.liquid` group with `_card` / `media` blocks; `collection-links.liquid` |
+| `sections/featured-collection.liquid` | `sections/product-list.liquid` (collection) / `sections/featured-product.liquid` |
+| `snippets/card-product.liquid` | `blocks/_product-card*.liquid` + `sections/section-rendering-product-card.liquid` |
+| `sections/image-with-text.liquid` | `sections/media-with-content.liquid` |
+| `sections/collapsible-content.liquid` (specs/FAQ) | `blocks/_accordion-row.liquid` (accordion blocks) |
+| `templates/product.json` + `sections/main-product.liquid` | `templates/product.json` + `sections/product-information.liquid` |
+| `templates/collection.json` + `main-collection-product-grid.liquid` | `templates/collection.json` + `sections/main-collection.liquid` + `product-list.liquid` |
+| `snippets/cart-drawer.liquid` | native cart drawer + `sections/main-cart.liquid` (blocks: `_cart-products`, `_cart-summary`) |
+| `assets/roebux.css` | unchanged — `assets/roebux.css`, linked once via `snippets/stylesheets.liquid` |
+
+> Fonts in Horizon: heading/subheading/body/accent roles via theme settings (`type_*_font`). RoeBux set: **Montserrat** (heading/subheading/accent) + **Roboto** (body). Color schemes live in `config/settings_data.json` `color_schemes` and are edited in the theme editor.
 
 ---
 

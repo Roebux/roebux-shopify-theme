@@ -1,0 +1,54 @@
+/*
+ * roebux.css — RoeBux brand polish for the Shopify Horizon theme.
+ *
+ * Scope (keep it small): brand design tokens + tiny, opt-in utilities that
+ * Horizon's native settings/blocks can't express. Prefer Horizon theme
+ * settings and color schemes for everything else.
+ *
+ * Phase 1 (foundations): brand tokens only. Section-specific styling is added
+ * per phase. Do NOT grow this into a parallel stylesheet.
+ *
+ * Palette = confirmed RoeBux values only. The muted olive/forest "field green"
+ * is intentionally NOT defined here yet — its hex is TBD and needs approval.
+ */
+
+:root {
+  /* Neutrals */
+  --roebux-offwhite: #fafaf9; /* dominant page background */
+  --roebux-charcoal: #2e2e2e; /* primary text / deep neutral dark */
+  --roebux-dark-brown: #45372c; /* warm cinematic dark sections */
+
+  /* Browns / warm neutrals */
+  --roebux-brown: #534030; /* heading / brand brown (logo color) */
+  --roebux-taupe: #5a483e; /* secondary / borders */
+  --roebux-bronze: #856546; /* secondary / borders */
+  --roebux-beige: #cbb994; /* light borders / dividers */
+
+  /* Accent — used calmly, never dominant */
+  --roebux-accent: #f47c00;
+  --roebux-accent-hover: #d35400;
+
+  /* --roebux-field-green: TBD; pending approval — do not hard-code */
+}
+
+/*
+ * Opt-in hero/overlay legibility helper. Horizon's media sections already
+ * provide an overlay control; use this only where a section needs an extra
+ * bottom-up scrim to keep overlaid text readable on light imagery.
+ * Apply by adding the class to a section's custom CSS class field.
+ */
+.roebux-scrim-bottom {
+  position: relative;
+}
+
+.roebux-scrim-bottom::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  background: linear-gradient(
+    to top,
+    rgb(18 18 18 / 0.45) 0%,
+    rgb(18 18 18 / 0) 55%
+  );
+}
