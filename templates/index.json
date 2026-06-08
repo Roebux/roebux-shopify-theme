@@ -540,8 +540,8 @@
         "toggle_overlay": false,
         "overlay_color": "#1c160f99",
         "overlay_style": "solid",
-        "padding-block-start": 112,
-        "padding-block-end": 112
+        "padding-block-start": 100,
+        "padding-block-end": 100
       }
     },
     "process": {
