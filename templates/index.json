@@ -10,7 +10,7 @@
 {
   "sections": {
     "hero": {
-      "type": "hero",
+      "type": "section",
       "blocks": {
         "hero_heading": {
           "type": "text",
@@ -37,38 +37,22 @@
           "settings": {
             "label": "Explore the collection",
             "link": "shopify://collections/all",
-            "style_class": "button-secondary"
+            "style_class": "button"
           }
         }
       },
       "block_order": ["hero_heading", "hero_subline", "hero_button"],
       "name": "Hero 1",
       "settings": {
-        "media_type_1": "image",
-        "media_type_2": "image",
-        "stack_media_on_mobile": false,
-        "custom_mobile_media": false,
-        "media_type_1_mobile": "image",
-        "media_type_2_mobile": "image",
-        "open_in_new_tab": false,
         "content_direction": "column",
         "vertical_on_mobile": true,
-        "horizontal_alignment": "flex-start",
-        "vertical_alignment": "flex-end",
-        "align_baseline": false,
         "horizontal_alignment_flex_direction_column": "flex-start",
         "vertical_alignment_flex_direction_column": "flex-end",
         "gap": 20,
         "section_width": "full-width",
         "section_height": "full-screen",
-        "section_height_custom": 50,
         "color_scheme": "scheme-6",
-        "toggle_overlay": true,
-        "overlay_color": "#1c160fa6",
-        "overlay_style": "gradient",
-        "gradient_direction": "to top",
-        "blurred_reflection": false,
-        "reflection_opacity": 75,
+        "background_media": "none",
         "padding-block-start": 100,
         "padding-block-end": 72
       }
@@ -139,7 +123,7 @@
               "settings": {
                 "label": "Discover the Signature Case",
                 "link": "shopify://collections/all",
-                "style_class": "link"
+                "style_class": "button-secondary"
               }
             }
           },
@@ -180,7 +164,7 @@
               "settings": {
                 "label": "See the Field Holder",
                 "link": "shopify://collections/all",
-                "style_class": "link"
+                "style_class": "button-secondary"
               }
             }
           },
@@ -521,7 +505,7 @@
           "settings": {
             "label": "Request a custom order",
             "link": "shopify://pages/custom-orders",
-            "style_class": "button-secondary"
+            "style_class": "button"
           }
         }
       },

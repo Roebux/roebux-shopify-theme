@@ -32,6 +32,14 @@
     {%- render 'theme-styles-variables' -%}
     {%- render 'color-schemes' -%}
 
+    {%- comment -%} RoeBux: expose homepage preview asset URLs as CSS variables (consumed by roebux.css). {%- endcomment -%}
+    <style>
+      :root {
+        --roebux-hero-1-image: url("{{ 'roebux-hero-1-placeholder.jpg' | asset_url }}");
+        --roebux-hero-2-image: url("{{ 'roebux-hero-2-atmosphere.jpg' | asset_url }}");
+      }
+    </style>
+
     {% if request.design_mode %}
       {%- render 'theme-editor' -%}
     {% endif %}

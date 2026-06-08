@@ -1,28 +1,33 @@
 /*
  * roebux.css — RoeBux brand polish for the Shopify Horizon theme.
  *
- * Scope (keep it small): brand design tokens + tiny, opt-in utilities that
- * Horizon's native settings/blocks can't express. Prefer Horizon theme
- * settings and color schemes for everything else.
+ * Scope: brand design tokens, a brand color-scheme palette layered onto
+ * Horizon's native schemes, and homepage visual polish (hero, atmosphere
+ * band, buttons, spacing). Horizon-native settings/blocks remain the source
+ * of structure; this file only adds brand finish that settings can't express.
  *
- * Phase 1 (foundations): brand tokens only. Section-specific styling is added
- * per phase. Do NOT grow this into a parallel stylesheet.
+ * Palette = confirmed RoeBux values. The muted "field green" is intentionally
+ * NOT used yet — its hex is TBD and needs approval.
  *
- * Palette = confirmed RoeBux values only. The muted olive/forest "field green"
- * is intentionally NOT defined here yet — its hex is TBD and needs approval.
+ * NOTE on specificity: Horizon prints its color-scheme variables from a
+ * {% style %} block that loads AFTER this stylesheet, so the scheme overrides
+ * below use a doubled class (.color-scheme-1.color-scheme-1) to win the cascade
+ * without !important.
  */
 
 :root {
   /* Neutrals */
-  --roebux-offwhite: #fafaf9; /* dominant page background */
-  --roebux-charcoal: #2e2e2e; /* primary text / deep neutral dark */
-  --roebux-dark-brown: #45372c; /* warm cinematic dark sections */
+  --roebux-offwhite: #fafaf9;
+  --roebux-charcoal: #2e2e2e;
+  --roebux-dark-brown: #45372c;
 
   /* Browns / warm neutrals */
   --roebux-brown: #534030; /* heading / brand brown (logo color) */
-  --roebux-taupe: #5a483e; /* secondary / borders */
-  --roebux-bronze: #856546; /* secondary / borders */
-  --roebux-beige: #cbb994; /* light borders / dividers */
+  --roebux-deep-taupe: #5a483e;
+  --roebux-warm-taupe: #736357;
+  --roebux-bronze: #856546;
+  --roebux-sand: #cbb994;
+  --roebux-warm-surface: #ede6d6;
 
   /* Accent — used calmly, never dominant */
   --roebux-accent: #f47c00;
@@ -31,24 +36,236 @@
   /* --roebux-field-green: TBD; pending approval — do not hard-code */
 }
 
-/*
- * Opt-in hero/overlay legibility helper. Horizon's media sections already
- * provide an overlay control; use this only where a section needs an extra
- * bottom-up scrim to keep overlaid text readable on light imagery.
- * Apply by adding the class to a section's custom CSS class field.
- */
-.roebux-scrim-bottom {
-  position: relative;
+/* ============================================================
+ * 1. Brand palette layered onto Horizon color schemes
+ *    scheme-1 = light page · scheme-2 = warm surface
+ *    scheme-5 = dark cinematic · scheme-6 = transparent (hero/header)
+ * ============================================================ */
+
+.color-scheme-1.color-scheme-1 {
+  --color-background: rgb(250 250 249);
+  --color-background-rgb: 250 250 249;
+  --color-foreground: rgb(46 46 46);
+  --color-foreground-rgb: 46 46 46;
+  --color-foreground-heading: rgb(83 64 48);
+  --color-foreground-heading-rgb: 83 64 48;
+  --color-primary: rgb(83 64 48);
+  --color-primary-rgb: 83 64 48;
+  --color-primary-hover: rgb(69 55 44);
+  --color-primary-hover-rgb: 69 55 44;
+  --color-border: rgb(203 185 148);
+  --color-border-rgb: 203 185 148;
+
+  --color-primary-button-background: rgb(244 124 0);
+  --color-primary-button-text: rgb(250 250 249);
+  --color-primary-button-border: rgb(244 124 0);
+  --color-primary-button-hover-background: rgb(211 84 0);
+  --color-primary-button-hover-text: rgb(250 250 249);
+  --color-primary-button-hover-border: rgb(211 84 0);
+
+  --color-secondary-button-background: rgba(0, 0, 0, 0);
+  --color-secondary-button-text: rgb(83 64 48);
+  --color-secondary-button-border: rgb(133 101 70);
+  --color-secondary-button-hover-background: rgb(83 64 48);
+  --color-secondary-button-hover-text: rgb(250 250 249);
+  --color-secondary-button-hover-border: rgb(83 64 48);
 }
 
-.roebux-scrim-bottom::after {
+.color-scheme-2.color-scheme-2 {
+  --color-background: rgb(237 230 214);
+  --color-background-rgb: 237 230 214;
+  --color-foreground: rgb(46 46 46);
+  --color-foreground-rgb: 46 46 46;
+  --color-foreground-heading: rgb(69 55 44);
+  --color-foreground-heading-rgb: 69 55 44;
+  --color-primary: rgb(83 64 48);
+  --color-primary-rgb: 83 64 48;
+  --color-primary-hover: rgb(69 55 44);
+  --color-primary-hover-rgb: 69 55 44;
+  --color-border: rgb(203 185 148);
+  --color-border-rgb: 203 185 148;
+
+  --color-primary-button-background: rgb(244 124 0);
+  --color-primary-button-text: rgb(250 250 249);
+  --color-primary-button-border: rgb(244 124 0);
+  --color-primary-button-hover-background: rgb(211 84 0);
+  --color-primary-button-hover-text: rgb(250 250 249);
+  --color-primary-button-hover-border: rgb(211 84 0);
+
+  --color-secondary-button-background: rgba(0, 0, 0, 0);
+  --color-secondary-button-text: rgb(83 64 48);
+  --color-secondary-button-border: rgb(133 101 70);
+  --color-secondary-button-hover-background: rgb(83 64 48);
+  --color-secondary-button-hover-text: rgb(250 250 249);
+  --color-secondary-button-hover-border: rgb(83 64 48);
+}
+
+.color-scheme-5.color-scheme-5 {
+  --color-background: rgb(69 55 44);
+  --color-background-rgb: 69 55 44;
+  --color-foreground: rgb(250 250 249);
+  --color-foreground-rgb: 250 250 249;
+  --color-foreground-heading: rgb(250 250 249);
+  --color-foreground-heading-rgb: 250 250 249;
+  --color-primary: rgb(250 250 249);
+  --color-primary-rgb: 250 250 249;
+  --color-primary-hover: rgb(203 185 148);
+  --color-primary-hover-rgb: 203 185 148;
+  --color-border: rgb(133 101 70);
+  --color-border-rgb: 133 101 70;
+
+  --color-primary-button-background: rgb(244 124 0);
+  --color-primary-button-text: rgb(250 250 249);
+  --color-primary-button-border: rgb(244 124 0);
+  --color-primary-button-hover-background: rgb(211 84 0);
+  --color-primary-button-hover-text: rgb(250 250 249);
+  --color-primary-button-hover-border: rgb(211 84 0);
+
+  --color-secondary-button-background: rgba(0, 0, 0, 0);
+  --color-secondary-button-text: rgb(250 250 249);
+  --color-secondary-button-border: rgb(203 185 148);
+  --color-secondary-button-hover-background: rgb(250 250 249);
+  --color-secondary-button-hover-text: rgb(69 55 44);
+  --color-secondary-button-hover-border: rgb(250 250 249);
+}
+
+/* Transparent scheme (hero text + transparent header). Keep background
+   transparent; only set foreground + brand buttons. */
+.color-scheme-6.color-scheme-6 {
+  --color-foreground: rgb(250 250 249);
+  --color-foreground-rgb: 250 250 249;
+  --color-foreground-heading: rgb(250 250 249);
+  --color-foreground-heading-rgb: 250 250 249;
+  --color-primary: rgb(250 250 249);
+  --color-primary-rgb: 250 250 249;
+
+  --color-primary-button-background: rgb(244 124 0);
+  --color-primary-button-text: rgb(250 250 249);
+  --color-primary-button-border: rgb(244 124 0);
+  --color-primary-button-hover-background: rgb(211 84 0);
+  --color-primary-button-hover-text: rgb(250 250 249);
+  --color-primary-button-hover-border: rgb(211 84 0);
+
+  --color-secondary-button-background: rgba(0, 0, 0, 0);
+  --color-secondary-button-text: rgb(250 250 249);
+  --color-secondary-button-border: rgb(250 250 249);
+  --color-secondary-button-hover-background: rgba(250, 250, 249, 0.14);
+  --color-secondary-button-hover-text: rgb(250 250 249);
+  --color-secondary-button-hover-border: rgb(250 250 249);
+}
+
+/* ============================================================
+ * 2. Hero 1 — full-viewport cinematic opener (CSS background so the
+ *    GitHub-synced preview shows the placeholder without manual upload).
+ *    Replace with a video hero later.
+ * ============================================================ */
+
+#shopify-section-hero {
+  position: relative;
+  background-color: #2e2e2e;
+  background-image: var(--roebux-hero-1-image);
+  background-size: cover;
+  background-position: center 35%;
+  background-repeat: no-repeat;
+}
+
+/* Premium bottom-up scrim for text legibility over imagery. */
+#shopify-section-hero::after {
   content: '';
   position: absolute;
   inset: 0;
   pointer-events: none;
   background: linear-gradient(
     to top,
-    rgb(18 18 18 / 0.45) 0%,
-    rgb(18 18 18 / 0) 55%
+    rgb(20 16 12 / 0.78) 0%,
+    rgb(20 16 12 / 0.30) 45%,
+    rgb(20 16 12 / 0.45) 100%
   );
+}
+
+/* Keep content above the scrim and give it a calm, intentional inset. */
+#shopify-section-hero > .section,
+#shopify-section-hero .section {
+  position: relative;
+  z-index: 1;
+}
+
+#shopify-section-hero .section {
+  min-height: 100svh;
+  max-width: 1500px;
+  margin-inline: auto;
+  width: 100%;
+  padding-inline: clamp(1.25rem, 5vw, 6rem);
+}
+
+/* Cinematic hero type. */
+#shopify-section-hero :is(h1, h2, .h1, .h2) {
+  font-size: clamp(2.5rem, 6vw, 5rem);
+  line-height: 1.04;
+  letter-spacing: -0.01em;
+  max-width: 18ch;
+}
+
+#shopify-section-hero p {
+  max-width: 46ch;
+}
+
+/* ============================================================
+ * 3. Atmospheric band (custom orders / "Hero 2") — warm gradient.
+ * ============================================================ */
+
+#shopify-section-custom_atmosphere {
+  position: relative;
+  background-color: #45372c;
+  background-image: var(--roebux-hero-2-image);
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+}
+
+#shopify-section-custom_atmosphere::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  background: rgb(28 22 15 / 0.55);
+}
+
+#shopify-section-custom_atmosphere > .section,
+#shopify-section-custom_atmosphere .section {
+  position: relative;
+  z-index: 1;
+}
+
+#shopify-section-custom_atmosphere p {
+  max-width: 52ch;
+}
+
+/* ============================================================
+ * 4. Button polish — intentional, consistent, premium.
+ * ============================================================ */
+
+.button,
+.button-secondary {
+  letter-spacing: 0.02em;
+  font-weight: 600;
+}
+
+/* ============================================================
+ * 5. Section rhythm — premium spacing + readable measure.
+ * ============================================================ */
+
+/* Constrain single-column copy sections to a comfortable measure. */
+#shopify-section-promise .section,
+#shopify-section-responsible .section {
+  max-width: 60rem;
+  margin-inline: auto;
+}
+
+/* Product-line, why and process columns: align content to the top so
+   uneven copy lengths still read as a clean grid. */
+#shopify-section-product_lines .group-block,
+#shopify-section-why .group-block,
+#shopify-section-process .group-block {
+  align-self: stretch;
 }
