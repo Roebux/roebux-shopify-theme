@@ -12,714 +12,294 @@
     "hero": {
       "type": "section",
       "blocks": {
+        "hero_eyebrow": {
+          "type": "text",
+          "settings": { "text": "<p>Precision field gear · Made to order</p>", "type_preset": "rte", "alignment": "left", "width": "fit-content", "max_width": "normal" }
+        },
         "hero_heading": {
           "type": "text",
-          "settings": {
-            "text": "<p>Precision Storage. Built for the Field.</p>",
-            "type_preset": "h1",
-            "alignment": "left",
-            "width": "fit-content",
-            "max_width": "normal"
-          }
+          "settings": { "text": "<p>Ready before first light.</p>", "type_preset": "h1", "alignment": "left", "width": "fit-content", "max_width": "normal" }
         },
-        "hero_subline": {
+        "hero_sub": {
           "type": "text",
-          "settings": {
-            "text": "<p>Premium, made-to-order cartridge storage and field-ready accessories — designed by a hunter, for the field.</p>",
-            "type_preset": "rte",
-            "alignment": "left",
-            "width": "fit-content",
-            "max_width": "normal"
-          }
+          "settings": { "text": "<p>Premium, made-to-order cartridge storage and field-ready accessories — designed by a hunter, for the field.</p>", "type_preset": "rte", "alignment": "left", "width": "fit-content", "max_width": "normal" }
         },
-        "hero_button": {
-          "type": "button",
-          "settings": {
-            "label": "Explore the collection",
-            "link": "shopify://collections/all",
-            "style_class": "button"
-          }
+        "hero_ctas": {
+          "type": "group",
+          "settings": { "content_direction": "row", "vertical_on_mobile": false, "horizontal_alignment": "flex-start", "vertical_alignment": "center", "gap": 16, "width": "fit-content", "inherit_color_scheme": true },
+          "blocks": {
+            "hero_cta_primary": {
+              "type": "button",
+              "settings": { "label": "Shop field gear", "link": "shopify://collections/all", "style_class": "button" }
+            },
+            "hero_cta_ghost": {
+              "type": "button",
+              "settings": { "label": "Explore custom orders →", "link": "#shopify-section-custom", "style_class": "link" }
+            }
+          },
+          "block_order": ["hero_cta_primary", "hero_cta_ghost"]
         }
       },
-      "block_order": ["hero_heading", "hero_subline", "hero_button"],
+      "block_order": ["hero_eyebrow", "hero_heading", "hero_sub", "hero_ctas"],
       "name": "Hero 1",
       "settings": {
         "content_direction": "column",
         "vertical_on_mobile": true,
         "horizontal_alignment_flex_direction_column": "flex-start",
         "vertical_alignment_flex_direction_column": "flex-end",
-        "gap": 20,
+        "gap": 16,
         "section_width": "full-width",
         "section_height": "full-screen",
         "color_scheme": "scheme-6",
         "background_media": "none",
         "padding-block-start": 100,
-        "padding-block-end": 72
+        "padding-block-end": 80
       }
     },
-    "promise": {
+    "products": {
       "type": "section",
       "blocks": {
-        "promise_text": {
+        "promise_line": {
           "type": "text",
-          "settings": {
-            "text": "<p>RoeBux makes premium, made-to-order cartridge storage and field-ready accessories — precise, prepared, and built to last.</p>",
-            "type_preset": "h5",
-            "alignment": "center",
-            "width": "fit-content",
-            "max_width": "normal"
-          }
+          "settings": { "text": "<p>Made by a hunter, for hunters.</p>", "type_preset": "h3", "alignment": "left", "width": "fit-content", "max_width": "normal" }
+        },
+        "promise_sub": {
+          "type": "text",
+          "settings": { "text": "<p>Every RoeBux piece is designed in the field, printed with precision, and refined season after season.</p>", "type_preset": "rte", "alignment": "left", "width": "fit-content", "max_width": "normal" }
+        },
+        "product_row": {
+          "type": "group",
+          "settings": { "content_direction": "row", "vertical_on_mobile": true, "horizontal_alignment": "flex-start", "vertical_alignment": "flex-start", "gap": 32, "width": "fill", "inherit_color_scheme": true },
+          "blocks": {
+            "card_signature": {
+              "type": "group",
+              "settings": { "content_direction": "column", "horizontal_alignment_flex_direction_column": "flex-start", "gap": 10, "width": "custom", "custom_width": 62, "width_mobile": "fill", "inherit_color_scheme": true, "link": "shopify://collections/all" },
+              "blocks": {
+                "sig_media": { "type": "image", "settings": { "image_ratio": "portrait", "width": "fill" } },
+                "sig_title": { "type": "text", "settings": { "text": "<p>The Signature Case</p>", "type_preset": "h4", "alignment": "left" } },
+                "sig_price": { "type": "text", "settings": { "text": "<p>from €89</p>", "type_preset": "rte", "alignment": "left" } },
+                "sig_desc": { "type": "text", "settings": { "text": "<p>A made-to-order cartridge case, printed to your caliber — every round seated, silent, and accounted for.</p>", "type_preset": "rte", "alignment": "left" } },
+                "sig_swatches": { "type": "text", "settings": { "text": "<p>+3 colours</p>", "type_preset": "rte", "alignment": "left" } },
+                "sig_cta": { "type": "button", "settings": { "label": "Discover the case", "link": "shopify://collections/all", "style_class": "button-secondary" } }
+              },
+              "block_order": ["sig_media", "sig_title", "sig_price", "sig_desc", "sig_swatches", "sig_cta"]
+            },
+            "card_field": {
+              "type": "group",
+              "settings": { "content_direction": "column", "horizontal_alignment_flex_direction_column": "flex-start", "gap": 10, "width": "custom", "custom_width": 34, "width_mobile": "fill", "inherit_color_scheme": true, "link": "shopify://collections/all" },
+              "blocks": {
+                "field_media": { "type": "image", "settings": { "image_ratio": "portrait", "width": "fill" } },
+                "field_title": { "type": "text", "settings": { "text": "<p>The Field Holder</p>", "type_preset": "h4", "alignment": "left" } },
+                "field_price": { "type": "text", "settings": { "text": "<p>from €39</p>", "type_preset": "rte", "alignment": "left" } },
+                "field_desc": { "type": "text", "settings": { "text": "<p>Keeps your next rounds at hand — quiet on the belt, fast when it matters.</p>", "type_preset": "rte", "alignment": "left" } },
+                "field_cta": { "type": "button", "settings": { "label": "Discover the holder", "link": "shopify://collections/all", "style_class": "link" } }
+              },
+              "block_order": ["field_media", "field_title", "field_price", "field_desc", "field_cta"]
+            }
+          },
+          "block_order": ["card_signature", "card_field"]
         }
       },
-      "block_order": ["promise_text"],
-      "name": "Brand promise",
+      "block_order": ["promise_line", "promise_sub", "product_row"],
+      "name": "Brand promise + product lines",
       "settings": {
         "content_direction": "column",
         "vertical_on_mobile": true,
-        "horizontal_alignment_flex_direction_column": "center",
-        "vertical_alignment_flex_direction_column": "center",
-        "gap": 12,
-        "section_width": "page-width",
-        "color_scheme": "scheme-1",
-        "padding-block-start": 72,
-        "padding-block-end": 72
-      }
-    },
-    "product_lines": {
-      "type": "section",
-      "blocks": {
-        "line_signature": {
-          "type": "group",
-          "settings": {
-            "content_direction": "column",
-            "horizontal_alignment_flex_direction_column": "flex-start",
-            "gap": 12,
-            "width": "fill",
-            "inherit_color_scheme": true
-          },
-          "blocks": {
-            "sig_image": {
-              "type": "image",
-              "settings": {}
-            },
-            "sig_heading": {
-              "type": "text",
-              "settings": {
-                "text": "<h3>Signature Cartridge Case</h3>",
-                "type_preset": "h4",
-                "alignment": "left"
-              }
-            },
-            "sig_body": {
-              "type": "text",
-              "settings": {
-                "text": "<p>Made-to-order precision. Per-caliber fit, secure latches, and an optional logo finish.</p>",
-                "type_preset": "rte",
-                "alignment": "left"
-              }
-            },
-            "sig_button": {
-              "type": "button",
-              "settings": {
-                "label": "Discover the Signature Case",
-                "link": "shopify://collections/all",
-                "style_class": "button-secondary"
-              }
-            }
-          },
-          "block_order": ["sig_image", "sig_heading", "sig_body", "sig_button"]
-        },
-        "line_field": {
-          "type": "group",
-          "settings": {
-            "content_direction": "column",
-            "horizontal_alignment_flex_direction_column": "flex-start",
-            "gap": 12,
-            "width": "fill",
-            "inherit_color_scheme": true
-          },
-          "blocks": {
-            "field_image": {
-              "type": "image",
-              "settings": {}
-            },
-            "field_heading": {
-              "type": "text",
-              "settings": {
-                "text": "<h3>Field Cartridge Holder</h3>",
-                "type_preset": "h4",
-                "alignment": "left"
-              }
-            },
-            "field_body": {
-              "type": "text",
-              "settings": {
-                "text": "<p>Grab-and-go field organisation. Compact, practical, with engraved-caliber detail.</p>",
-                "type_preset": "rte",
-                "alignment": "left"
-              }
-            },
-            "field_button": {
-              "type": "button",
-              "settings": {
-                "label": "See the Field Holder",
-                "link": "shopify://collections/all",
-                "style_class": "button-secondary"
-              }
-            }
-          },
-          "block_order": ["field_image", "field_heading", "field_body", "field_button"]
-        }
-      },
-      "block_order": ["line_signature", "line_field"],
-      "name": "Two product lines",
-      "settings": {
-        "content_direction": "row",
-        "vertical_on_mobile": true,
-        "horizontal_alignment": "center",
-        "vertical_alignment": "flex-start",
-        "gap": 32,
-        "section_width": "page-width",
-        "color_scheme": "scheme-1",
-        "padding-block-start": 72,
-        "padding-block-end": 72
-      }
-    },
-    "featured": {
-      "type": "product-list",
-      "blocks": {
-        "static-header": {
-          "type": "_product-list-content",
-          "name": "t:names.header",
-          "static": true,
-          "settings": {
-            "content_direction": "row",
-            "vertical_on_mobile": false,
-            "horizontal_alignment": "space-between",
-            "vertical_alignment": "flex-end",
-            "align_baseline": true,
-            "horizontal_alignment_flex_direction_column": "flex-start",
-            "vertical_alignment_flex_direction_column": "center",
-            "gap": 12,
-            "width": "fill",
-            "custom_width": 100,
-            "width_mobile": "fill",
-            "custom_width_mobile": 100,
-            "height": "fit",
-            "custom_height": 100,
-            "inherit_color_scheme": true,
-            "color_scheme": "",
-            "background_media": "none",
-            "video_position": "cover",
-            "background_image_position": "cover",
-            "border": "none",
-            "border_width": 1,
-            "border_opacity": 100,
-            "border_radius": 0,
-            "padding-block-start": 0,
-            "padding-block-end": 0,
-            "padding-inline-start": 0,
-            "padding-inline-end": 0
-          },
-          "blocks": {
-            "featured_title": {
-              "type": "_product-list-text",
-              "name": "t:names.collection_title",
-              "settings": {
-                "text": "<h3>Featured</h3>",
-                "width": "fit-content",
-                "max_width": "normal",
-                "alignment": "left",
-                "type_preset": "h4",
-                "font": "var(--font-body--family)",
-                "font_size": "",
-                "line_height": "normal",
-                "letter_spacing": "normal",
-                "case": "none",
-                "wrap": "pretty",
-                "color": "var(--color-foreground)",
-                "background": false,
-                "background_color": "#00000026",
-                "corner_radius": 0,
-                "padding-block-start": 0,
-                "padding-block-end": 0,
-                "padding-inline-start": 0,
-                "padding-inline-end": 0
-              },
-              "blocks": {}
-            },
-            "featured_view_all": {
-              "type": "_product-list-button",
-              "name": "t:names.product_list_button",
-              "settings": {
-                "label": "View all",
-                "open_in_new_tab": false,
-                "style_class": "link",
-                "width": "fit-content",
-                "custom_width": 100,
-                "width_mobile": "fit-content",
-                "custom_width_mobile": 100
-              },
-              "blocks": {}
-            }
-          },
-          "block_order": ["featured_title", "featured_view_all"]
-        },
-        "static-product-card": {
-          "type": "_product-card",
-          "name": "t:names.product_card",
-          "static": true,
-          "settings": {
-            "product_card_gap": 4,
-            "inherit_color_scheme": true,
-            "color_scheme": "",
-            "border": "none",
-            "border_width": 1,
-            "border_opacity": 100,
-            "border_radius": 0,
-            "padding-block-start": 0,
-            "padding-block-end": 0,
-            "padding-inline-start": 0,
-            "padding-inline-end": 0
-          },
-          "blocks": {
-            "card_gallery": {
-              "type": "_product-card-gallery",
-              "name": "t:names.product_card_media",
-              "settings": {
-                "image_ratio": "adapt",
-                "border": "none",
-                "border_width": 1,
-                "border_opacity": 100,
-                "border_radius": 0,
-                "padding-block-start": 0,
-                "padding-block-end": 0,
-                "padding-inline-start": 0,
-                "padding-inline-end": 0
-              },
-              "blocks": {}
-            },
-            "card_title": {
-              "type": "product-title",
-              "name": "t:names.product_title",
-              "settings": {
-                "width": "100%",
-                "max_width": "normal",
-                "alignment": "left",
-                "type_preset": "rte",
-                "font": "var(--font-body--family)",
-                "font_size": "1rem",
-                "line_height": "normal",
-                "letter_spacing": "normal",
-                "case": "none",
-                "wrap": "pretty",
-                "color": "var(--color-foreground)",
-                "background": false,
-                "background_color": "#00000026",
-                "corner_radius": 0,
-                "padding-block-start": 4,
-                "padding-block-end": 0,
-                "padding-inline-start": 0,
-                "padding-inline-end": 0
-              },
-              "blocks": {}
-            },
-            "card_price": {
-              "type": "price",
-              "name": "t:names.product_price",
-              "settings": {
-                "show_sale_price_first": true,
-                "show_installments": false,
-                "show_tax_info": false,
-                "type_preset": "h6",
-                "width": "100%",
-                "alignment": "left",
-                "font": "var(--font-body--family)",
-                "font_size": "1rem",
-                "line_height": "normal",
-                "letter_spacing": "normal",
-                "case": "none",
-                "color": "var(--color-foreground)",
-                "padding-block-start": 0,
-                "padding-block-end": 0,
-                "padding-inline-start": 0,
-                "padding-inline-end": 0
-              },
-              "blocks": {}
-            }
-          },
-          "block_order": ["card_gallery", "card_title", "card_price"]
-        }
-      },
-      "name": "Featured products",
-      "settings": {
-        "collection": "all",
-        "layout_type": "grid",
-        "carousel_on_mobile": false,
-        "max_products": 2,
-        "columns": 2,
-        "mobile_columns": "1",
-        "mobile_card_size": "60cqw",
-        "columns_gap": 8,
-        "rows_gap": 24,
-        "icons_style": "arrow",
-        "icons_shape": "none",
-        "section_width": "page-width",
-        "horizontal_alignment": "flex-start",
+        "horizontal_alignment_flex_direction_column": "flex-start",
+        "vertical_alignment_flex_direction_column": "flex-start",
         "gap": 28,
+        "section_width": "page-width",
         "color_scheme": "scheme-1",
-        "padding-block-start": 48,
-        "padding-block-end": 48
+        "padding-block-start": 88,
+        "padding-block-end": 88
       }
     },
     "why": {
       "type": "section",
       "blocks": {
-        "why_precision": {
-          "type": "group",
-          "settings": {
-            "content_direction": "column",
-            "horizontal_alignment_flex_direction_column": "flex-start",
-            "gap": 8,
-            "width": "fill",
-            "inherit_color_scheme": true
-          },
-          "blocks": {
-            "why_precision_h": {
-              "type": "text",
-              "settings": {
-                "text": "<h3>Precision Fit</h3>",
-                "type_preset": "h5",
-                "alignment": "left"
-              }
-            },
-            "why_precision_b": {
-              "type": "text",
-              "settings": {
-                "text": "<p>Caliber-specific compartments hold each cartridge exactly in place.</p>",
-                "type_preset": "rte",
-                "alignment": "left"
-              }
-            }
-          },
-          "block_order": ["why_precision_h", "why_precision_b"]
+        "why_eyebrow": {
+          "type": "text",
+          "settings": { "text": "<p>Why RoeBux</p>", "type_preset": "rte", "alignment": "left", "width": "fit-content", "max_width": "normal" }
         },
-        "why_made": {
+        "why_row": {
           "type": "group",
-          "settings": {
-            "content_direction": "column",
-            "horizontal_alignment_flex_direction_column": "flex-start",
-            "gap": 8,
-            "width": "fill",
-            "inherit_color_scheme": true
-          },
+          "settings": { "content_direction": "row", "vertical_on_mobile": true, "horizontal_alignment": "flex-start", "vertical_alignment": "flex-start", "gap": 32, "width": "fill", "inherit_color_scheme": true },
           "blocks": {
-            "why_made_h": {
-              "type": "text",
-              "settings": {
-                "text": "<h3>Made to Order</h3>",
-                "type_preset": "h5",
-                "alignment": "left"
-              }
+            "why_1": {
+              "type": "group",
+              "settings": { "content_direction": "column", "horizontal_alignment_flex_direction_column": "flex-start", "gap": 8, "width": "fill", "inherit_color_scheme": true },
+              "blocks": {
+                "why_1_h": { "type": "text", "settings": { "text": "<p>01 · Precision fit</p>", "type_preset": "h5", "alignment": "left" } },
+                "why_1_b": { "type": "text", "settings": { "text": "<p>Printed to the millimetre for your exact caliber — no rattle, no play, no compromise.</p>", "type_preset": "rte", "alignment": "left" } }
+              },
+              "block_order": ["why_1_h", "why_1_b"]
             },
-            "why_made_b": {
-              "type": "text",
-              "settings": {
-                "text": "<p>Produced per order with modern 3D-printed manufacturing.</p>",
-                "type_preset": "rte",
-                "alignment": "left"
-              }
+            "why_2": {
+              "type": "group",
+              "settings": { "content_direction": "column", "horizontal_alignment_flex_direction_column": "flex-start", "gap": 8, "width": "fill", "inherit_color_scheme": true },
+              "blocks": {
+                "why_2_h": { "type": "text", "settings": { "text": "<p>02 · Made to order</p>", "type_preset": "h5", "alignment": "left" } },
+                "why_2_b": { "type": "text", "settings": { "text": "<p>Your color, your mark, your specification — each piece begins printing when you order it.</p>", "type_preset": "rte", "alignment": "left" } }
+              },
+              "block_order": ["why_2_h", "why_2_b"]
+            },
+            "why_3": {
+              "type": "group",
+              "settings": { "content_direction": "column", "horizontal_alignment_flex_direction_column": "flex-start", "gap": 8, "width": "fill", "inherit_color_scheme": true },
+              "blocks": {
+                "why_3_h": { "type": "text", "settings": { "text": "<p>03 · Field-ready design</p>", "type_preset": "h5", "alignment": "left" } },
+                "why_3_b": { "type": "text", "settings": { "text": "<p>Designed on real hunts and improved every season — gear that earns its place in the pack.</p>", "type_preset": "rte", "alignment": "left" } }
+              },
+              "block_order": ["why_3_h", "why_3_b"]
             }
           },
-          "block_order": ["why_made_h", "why_made_b"]
-        },
-        "why_field": {
-          "type": "group",
-          "settings": {
-            "content_direction": "column",
-            "horizontal_alignment_flex_direction_column": "flex-start",
-            "gap": 8,
-            "width": "fill",
-            "inherit_color_scheme": true
-          },
-          "blocks": {
-            "why_field_h": {
-              "type": "text",
-              "settings": {
-                "text": "<h3>Field-Ready Design</h3>",
-                "type_preset": "h5",
-                "alignment": "left"
-              }
-            },
-            "why_field_b": {
-              "type": "text",
-              "settings": {
-                "text": "<p>Secure, compact and built for real use in the field.</p>",
-                "type_preset": "rte",
-                "alignment": "left"
-              }
-            }
-          },
-          "block_order": ["why_field_h", "why_field_b"]
+          "block_order": ["why_1", "why_2", "why_3"]
         }
       },
-      "block_order": ["why_precision", "why_made", "why_field"],
+      "block_order": ["why_eyebrow", "why_row"],
       "name": "Why RoeBux",
-      "settings": {
-        "content_direction": "row",
-        "vertical_on_mobile": true,
-        "horizontal_alignment": "center",
-        "vertical_alignment": "flex-start",
-        "gap": 32,
-        "section_width": "page-width",
-        "color_scheme": "scheme-2",
-        "padding-block-start": 72,
-        "padding-block-end": 72
-      }
-    },
-    "custom_atmosphere": {
-      "type": "section",
-      "blocks": {
-        "custom_heading": {
-          "type": "text",
-          "settings": {
-            "text": "<p>Make it yours</p>",
-            "type_preset": "h2",
-            "alignment": "center",
-            "width": "fit-content",
-            "max_width": "normal"
-          }
-        },
-        "custom_body": {
-          "type": "text",
-          "settings": {
-            "text": "<p>Custom colours, logos and calibres are available on request.</p>",
-            "type_preset": "rte",
-            "alignment": "center",
-            "width": "fit-content",
-            "max_width": "normal"
-          }
-        },
-        "custom_button": {
-          "type": "button",
-          "settings": {
-            "label": "Request a custom order",
-            "link": "shopify://pages/custom-orders",
-            "style_class": "button"
-          }
-        }
-      },
-      "block_order": ["custom_heading", "custom_body", "custom_button"],
-      "name": "Custom orders (atmosphere)",
       "settings": {
         "content_direction": "column",
         "vertical_on_mobile": true,
-        "horizontal_alignment_flex_direction_column": "center",
-        "vertical_alignment_flex_direction_column": "center",
-        "gap": 16,
-        "section_width": "full-width",
-        "color_scheme": "scheme-5",
-        "background_media": "none",
-        "background_image_position": "cover",
-        "toggle_overlay": false,
-        "overlay_color": "#1c160f99",
-        "overlay_style": "solid",
-        "padding-block-start": 100,
-        "padding-block-end": 100
-      }
-    },
-    "process": {
-      "type": "section",
-      "blocks": {
-        "step_1": {
-          "type": "group",
-          "settings": {
-            "content_direction": "column",
-            "horizontal_alignment_flex_direction_column": "flex-start",
-            "gap": 8,
-            "width": "fill",
-            "inherit_color_scheme": true
-          },
-          "blocks": {
-            "step_1_n": {
-              "type": "text",
-              "settings": { "text": "<p>01</p>", "type_preset": "h3", "alignment": "left" }
-            },
-            "step_1_b": {
-              "type": "text",
-              "settings": {
-                "text": "<p><strong>Designed</strong><br>Engineered for a precise caliber fit.</p>",
-                "type_preset": "rte",
-                "alignment": "left"
-              }
-            }
-          },
-          "block_order": ["step_1_n", "step_1_b"]
-        },
-        "step_2": {
-          "type": "group",
-          "settings": {
-            "content_direction": "column",
-            "horizontal_alignment_flex_direction_column": "flex-start",
-            "gap": 8,
-            "width": "fill",
-            "inherit_color_scheme": true
-          },
-          "blocks": {
-            "step_2_n": {
-              "type": "text",
-              "settings": { "text": "<p>02</p>", "type_preset": "h3", "alignment": "left" }
-            },
-            "step_2_b": {
-              "type": "text",
-              "settings": {
-                "text": "<p><strong>Printed</strong><br>Produced to order with modern 3D printing.</p>",
-                "type_preset": "rte",
-                "alignment": "left"
-              }
-            }
-          },
-          "block_order": ["step_2_n", "step_2_b"]
-        },
-        "step_3": {
-          "type": "group",
-          "settings": {
-            "content_direction": "column",
-            "horizontal_alignment_flex_direction_column": "flex-start",
-            "gap": 8,
-            "width": "fill",
-            "inherit_color_scheme": true
-          },
-          "blocks": {
-            "step_3_n": {
-              "type": "text",
-              "settings": { "text": "<p>03</p>", "type_preset": "h3", "alignment": "left" }
-            },
-            "step_3_b": {
-              "type": "text",
-              "settings": {
-                "text": "<p><strong>Checked</strong><br>Inspected for fit, finish and function.</p>",
-                "type_preset": "rte",
-                "alignment": "left"
-              }
-            }
-          },
-          "block_order": ["step_3_n", "step_3_b"]
-        },
-        "step_4": {
-          "type": "group",
-          "settings": {
-            "content_direction": "column",
-            "horizontal_alignment_flex_direction_column": "flex-start",
-            "gap": 8,
-            "width": "fill",
-            "inherit_color_scheme": true
-          },
-          "blocks": {
-            "step_4_n": {
-              "type": "text",
-              "settings": { "text": "<p>04</p>", "type_preset": "h3", "alignment": "left" }
-            },
-            "step_4_b": {
-              "type": "text",
-              "settings": {
-                "text": "<p><strong>Shipped</strong><br>Dispatched ready for the field.</p>",
-                "type_preset": "rte",
-                "alignment": "left"
-              }
-            }
-          },
-          "block_order": ["step_4_n", "step_4_b"]
-        }
-      },
-      "block_order": ["step_1", "step_2", "step_3", "step_4"],
-      "name": "Craft / process",
-      "settings": {
-        "content_direction": "row",
-        "vertical_on_mobile": true,
-        "horizontal_alignment": "center",
-        "vertical_alignment": "flex-start",
+        "horizontal_alignment_flex_direction_column": "flex-start",
+        "vertical_alignment_flex_direction_column": "flex-start",
         "gap": 32,
         "section_width": "page-width",
+        "color_scheme": "scheme-5",
+        "padding-block-start": 96,
+        "padding-block-end": 96
+      }
+    },
+    "custom": {
+      "type": "section",
+      "blocks": {
+        "custom_eyebrow": { "type": "text", "settings": { "text": "<p>Color · Logo · Caliber</p>", "type_preset": "rte", "alignment": "left", "width": "fit-content", "max_width": "normal" } },
+        "custom_heading": { "type": "text", "settings": { "text": "<p>Built to your specification.</p>", "type_preset": "h2", "alignment": "left", "width": "fit-content", "max_width": "normal" } },
+        "custom_body": { "type": "text", "settings": { "text": "<p>Choose the color, add your mark, name the caliber. Because it's printed, it can be made for you — exactly.</p>", "type_preset": "rte", "alignment": "left", "width": "fit-content", "max_width": "normal" } },
+        "custom_cta": { "type": "button", "settings": { "label": "Request a custom order", "link": "shopify://collections/all", "style_class": "button" } }
+      },
+      "block_order": ["custom_eyebrow", "custom_heading", "custom_body", "custom_cta"],
+      "name": "Custom orders",
+      "settings": {
+        "content_direction": "column",
+        "vertical_on_mobile": true,
+        "horizontal_alignment_flex_direction_column": "flex-start",
+        "vertical_alignment_flex_direction_column": "center",
+        "gap": 16,
+        "section_width": "page-width",
         "color_scheme": "scheme-1",
-        "padding-block-start": 72,
-        "padding-block-end": 72
+        "padding-block-start": 88,
+        "padding-block-end": 88
+      }
+    },
+    "craft": {
+      "type": "section",
+      "blocks": {
+        "craft_eyebrow": { "type": "text", "settings": { "text": "<p>Craft &amp; process</p>", "type_preset": "rte", "alignment": "left", "width": "fit-content", "max_width": "normal" } },
+        "craft_heading": { "type": "text", "settings": { "text": "<p>From drawing board to deer stand.</p>", "type_preset": "h2", "alignment": "left", "width": "fit-content", "max_width": "normal" } },
+        "craft_row": {
+          "type": "group",
+          "settings": { "content_direction": "row", "vertical_on_mobile": true, "horizontal_alignment": "flex-start", "vertical_alignment": "flex-start", "gap": 24, "width": "fill", "inherit_color_scheme": true },
+          "blocks": {
+            "step_1": {
+              "type": "group",
+              "settings": { "content_direction": "column", "horizontal_alignment_flex_direction_column": "flex-start", "gap": 6, "width": "fill", "inherit_color_scheme": true },
+              "blocks": {
+                "step_1_num": { "type": "text", "settings": { "text": "<p>01</p>", "type_preset": "h4", "alignment": "left" } },
+                "step_1_h": { "type": "text", "settings": { "text": "<p>Designed</p>", "type_preset": "h5", "alignment": "left" } },
+                "step_1_b": { "type": "text", "settings": { "text": "<p>Modelled around real cartridges and real field use.</p>", "type_preset": "rte", "alignment": "left" } }
+              },
+              "block_order": ["step_1_num", "step_1_h", "step_1_b"]
+            },
+            "step_2": {
+              "type": "group",
+              "settings": { "content_direction": "column", "horizontal_alignment_flex_direction_column": "flex-start", "gap": 6, "width": "fill", "inherit_color_scheme": true },
+              "blocks": {
+                "step_2_num": { "type": "text", "settings": { "text": "<p>02</p>", "type_preset": "h4", "alignment": "left" } },
+                "step_2_h": { "type": "text", "settings": { "text": "<p>Printed</p>", "type_preset": "h5", "alignment": "left" } },
+                "step_2_b": { "type": "text", "settings": { "text": "<p>Precision 3D-printed in durable matte polymer, layer by layer.</p>", "type_preset": "rte", "alignment": "left" } }
+              },
+              "block_order": ["step_2_num", "step_2_h", "step_2_b"]
+            },
+            "step_3": {
+              "type": "group",
+              "settings": { "content_direction": "column", "horizontal_alignment_flex_direction_column": "flex-start", "gap": 6, "width": "fill", "inherit_color_scheme": true },
+              "blocks": {
+                "step_3_num": { "type": "text", "settings": { "text": "<p>03</p>", "type_preset": "h4", "alignment": "left" } },
+                "step_3_h": { "type": "text", "settings": { "text": "<p>Checked</p>", "type_preset": "h5", "alignment": "left" } },
+                "step_3_b": { "type": "text", "settings": { "text": "<p>Fit-tested by hand against your stated caliber before it ships.</p>", "type_preset": "rte", "alignment": "left" } }
+              },
+              "block_order": ["step_3_num", "step_3_h", "step_3_b"]
+            },
+            "step_4": {
+              "type": "group",
+              "settings": { "content_direction": "column", "horizontal_alignment_flex_direction_column": "flex-start", "gap": 6, "width": "fill", "inherit_color_scheme": true },
+              "blocks": {
+                "step_4_num": { "type": "text", "settings": { "text": "<p>04</p>", "type_preset": "h4", "alignment": "left" } },
+                "step_4_h": { "type": "text", "settings": { "text": "<p>Shipped</p>", "type_preset": "h5", "alignment": "left" } },
+                "step_4_b": { "type": "text", "settings": { "text": "<p>Packed plainly and sent tracked — ready for the season.</p>", "type_preset": "rte", "alignment": "left" } }
+              },
+              "block_order": ["step_4_num", "step_4_h", "step_4_b"]
+            }
+          },
+          "block_order": ["step_1", "step_2", "step_3", "step_4"]
+        }
+      },
+      "block_order": ["craft_eyebrow", "craft_heading", "craft_row"],
+      "name": "Craft & process",
+      "settings": {
+        "content_direction": "column",
+        "vertical_on_mobile": true,
+        "horizontal_alignment_flex_direction_column": "flex-start",
+        "vertical_alignment_flex_direction_column": "flex-start",
+        "gap": 32,
+        "section_width": "page-width",
+        "color_scheme": "scheme-5",
+        "padding-block-start": 96,
+        "padding-block-end": 96
       }
     },
     "responsible": {
       "type": "section",
       "blocks": {
-        "responsible_text": {
-          "type": "text",
-          "settings": {
-            "text": "<p>Built for preparation and respect — RoeBux supports organised, responsible time in the field.</p>",
-            "type_preset": "h6",
-            "alignment": "center",
-            "width": "fit-content",
-            "max_width": "normal"
-          }
-        }
+        "resp_eyebrow": { "type": "text", "settings": { "text": "<p>Responsible field use</p>", "type_preset": "rte", "alignment": "center", "width": "fit-content", "max_width": "normal" } },
+        "resp_body": { "type": "text", "settings": { "text": "<p>Good hunting is preparation. Order in the pack, reliability in the pocket, and respect for the wild that hosts us.</p>", "type_preset": "h5", "alignment": "center", "width": "fit-content", "max_width": "normal" } },
+        "resp_note": { "type": "text", "settings": { "text": "<p>RoeBux makes storage and accessories — never firearms, never ammunition.</p>", "type_preset": "rte", "alignment": "center", "width": "fit-content", "max_width": "normal" } }
       },
-      "block_order": ["responsible_text"],
+      "block_order": ["resp_eyebrow", "resp_body", "resp_note"],
       "name": "Responsible field use",
       "settings": {
         "content_direction": "column",
         "vertical_on_mobile": true,
         "horizontal_alignment_flex_direction_column": "center",
         "vertical_alignment_flex_direction_column": "center",
-        "gap": 12,
+        "gap": 14,
         "section_width": "page-width",
-        "color_scheme": "scheme-2",
-        "padding-block-start": 64,
-        "padding-block-end": 64
+        "color_scheme": "scheme-1",
+        "padding-block-start": 80,
+        "padding-block-end": 80
       }
     },
     "closing": {
       "type": "section",
       "blocks": {
-        "closing_heading": {
-          "type": "text",
-          "settings": {
-            "text": "<p>Built for the field. Ready when you are.</p>",
-            "type_preset": "h2",
-            "alignment": "center",
-            "width": "fit-content",
-            "max_width": "normal"
-          }
-        },
-        "closing_button": {
-          "type": "button",
-          "settings": {
-            "label": "Explore the collection",
-            "link": "shopify://collections/all",
-            "style_class": "button-secondary"
-          }
-        }
+        "closing_heading": { "type": "text", "settings": { "text": "<p>When the season opens, you'll be ready.</p>", "type_preset": "h2", "alignment": "center", "width": "fit-content", "max_width": "normal" } },
+        "closing_cta": { "type": "button", "settings": { "label": "Browse the collection →", "link": "shopify://collections/all", "style_class": "button-secondary" } }
       },
-      "block_order": ["closing_heading", "closing_button"],
+      "block_order": ["closing_heading", "closing_cta"],
       "name": "Closing statement",
       "settings": {
         "content_direction": "column",
         "vertical_on_mobile": true,
         "horizontal_alignment_flex_direction_column": "center",
         "vertical_alignment_flex_direction_column": "center",
-        "gap": 20,
+        "gap": 22,
         "section_width": "page-width",
-        "color_scheme": "scheme-1",
-        "padding-block-start": 96,
-        "padding-block-end": 96
+        "color_scheme": "scheme-5",
+        "padding-block-start": 100,
+        "padding-block-end": 100
       }
     }
   },
-  "order": [
-    "hero",
-    "promise",
-    "product_lines",
-    "featured",
-    "why",
-    "custom_atmosphere",
-    "process",
-    "responsible",
-    "closing"
-  ]
+  "order": ["hero", "products", "why", "custom", "craft", "responsible", "closing"]
 }

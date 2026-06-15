@@ -1,45 +1,42 @@
 /*
- * roebux.css — RoeBux brand polish for the Shopify Horizon theme.
+ * roebux.css — RoeBux brand layer for Shopify Horizon.
  *
- * Scope: brand design tokens, a brand color-scheme palette layered onto
- * Horizon's native schemes, and homepage visual polish (hero, atmosphere
- * band, buttons, spacing). Horizon-native settings/blocks remain the source
- * of structure; this file only adds brand finish that settings can't express.
+ * Implements the frozen homepage design direction (docs/ROEBUX_HOMEPAGE_DESIGN_DIRECTION.md)
+ * on top of Horizon-native sections / theme blocks. Structure + content live in
+ * templates/index.json (editor-editable); this file adds the brand finish that
+ * native settings can't express: palette on the color schemes, hero scrim + slow
+ * settle, asymmetric product tiles with warm shadow + hover-swap, engineered craft
+ * treatment, eyebrows, scroll-reveal styling and motion.
  *
- * Palette = confirmed RoeBux values. The muted "field green" is intentionally
- * NOT used yet — its hex is TBD and needs approval.
+ * Hooks: text blocks expose `.text-block--{id}`, image blocks `.image-block--{id}`,
+ * sections `#shopify-section-{key}` — these are stable and used below.
  *
- * NOTE on specificity: Horizon prints its color-scheme variables from a
- * {% style %} block that loads AFTER this stylesheet, so the scheme overrides
- * below use a doubled class (.color-scheme-1.color-scheme-1) to win the cascade
- * without !important.
+ * Palette = confirmed RoeBux values. Field green #515B44 is PROVISIONAL (TBD) and
+ * used only as one eyebrow + one product swatch — do not finalize.
+ *
+ * Scheme overrides use a doubled class (.color-scheme-1.color-scheme-1) so they win
+ * Horizon's color-scheme {% style %} which loads after this file.
  */
 
 :root {
-  /* Neutrals */
   --roebux-offwhite: #fafaf9;
   --roebux-charcoal: #2e2e2e;
   --roebux-dark-brown: #45372c;
-
-  /* Browns / warm neutrals */
-  --roebux-brown: #534030; /* heading / brand brown (logo color) */
+  --roebux-brown: #534030;
   --roebux-deep-taupe: #5a483e;
   --roebux-warm-taupe: #736357;
   --roebux-bronze: #856546;
   --roebux-sand: #cbb994;
-  --roebux-warm-surface: #ede6d6;
-
-  /* Accent — used calmly, never dominant */
   --roebux-accent: #f47c00;
   --roebux-accent-hover: #d35400;
+  --roebux-field-green: #515b44; /* PROVISIONAL — TBD, do not finalize */
 
-  /* --roebux-field-green: TBD; pending approval — do not hard-code */
+  --rbx-ease: cubic-bezier(0.22, 1, 0.36, 1);
 }
 
 /* ============================================================
- * 1. Brand palette layered onto Horizon color schemes
- *    scheme-1 = light page · scheme-2 = warm surface
- *    scheme-5 = dark cinematic · scheme-6 = transparent (hero/header)
+ * 1. Brand palette on Horizon color schemes
+ *    1 = off-white page · 5 = warm dark · 6 = transparent (hero/header)
  * ============================================================ */
 
 .color-scheme-1.color-scheme-1 {
@@ -49,35 +46,6 @@
   --color-foreground-rgb: 46 46 46;
   --color-foreground-heading: rgb(83 64 48);
   --color-foreground-heading-rgb: 83 64 48;
-  --color-primary: rgb(83 64 48);
-  --color-primary-rgb: 83 64 48;
-  --color-primary-hover: rgb(69 55 44);
-  --color-primary-hover-rgb: 69 55 44;
-  --color-border: rgb(203 185 148);
-  --color-border-rgb: 203 185 148;
-
-  --color-primary-button-background: rgb(244 124 0);
-  --color-primary-button-text: rgb(250 250 249);
-  --color-primary-button-border: rgb(244 124 0);
-  --color-primary-button-hover-background: rgb(211 84 0);
-  --color-primary-button-hover-text: rgb(250 250 249);
-  --color-primary-button-hover-border: rgb(211 84 0);
-
-  --color-secondary-button-background: rgba(0, 0, 0, 0);
-  --color-secondary-button-text: rgb(83 64 48);
-  --color-secondary-button-border: rgb(133 101 70);
-  --color-secondary-button-hover-background: rgb(83 64 48);
-  --color-secondary-button-hover-text: rgb(250 250 249);
-  --color-secondary-button-hover-border: rgb(83 64 48);
-}
-
-.color-scheme-2.color-scheme-2 {
-  --color-background: rgb(237 230 214);
-  --color-background-rgb: 237 230 214;
-  --color-foreground: rgb(46 46 46);
-  --color-foreground-rgb: 46 46 46;
-  --color-foreground-heading: rgb(69 55 44);
-  --color-foreground-heading-rgb: 69 55 44;
   --color-primary: rgb(83 64 48);
   --color-primary-rgb: 83 64 48;
   --color-primary-hover: rgb(69 55 44);
@@ -129,8 +97,6 @@
   --color-secondary-button-hover-border: rgb(250 250 249);
 }
 
-/* Transparent scheme (hero text + transparent header). Keep background
-   transparent; only set foreground + brand buttons. */
 .color-scheme-6.color-scheme-6 {
   --color-foreground: rgb(250 250 249);
   --color-foreground-rgb: 250 250 249;
@@ -155,42 +121,70 @@
 }
 
 /* ============================================================
- * 2. Hero 1 — full-viewport cinematic opener (CSS background so the
- *    GitHub-synced preview shows the placeholder without manual upload).
- *    Replace with a video hero later.
+ * 2. Eyebrow labels — small, tracked, Montserrat
+ * ============================================================ */
+
+:is(
+  .text-block--hero_eyebrow,
+  .text-block--why_eyebrow,
+  .text-block--craft_eyebrow,
+  .text-block--custom_eyebrow,
+  .text-block--resp_eyebrow
+) p {
+  margin: 0;
+  font-family: var(--font-heading--family);
+  font-size: 0.78rem;
+  font-weight: 600;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+}
+
+:is(.text-block--hero_eyebrow, .text-block--why_eyebrow, .text-block--craft_eyebrow) p {
+  color: var(--roebux-sand);
+}
+.text-block--custom_eyebrow p { color: var(--roebux-bronze); }
+.text-block--resp_eyebrow p { color: var(--roebux-field-green); } /* provisional */
+
+/* ============================================================
+ * 3. Hero — full-viewport cinematic opener (CSS background so the
+ *    GitHub-synced preview shows the placeholder; swap to video later)
  * ============================================================ */
 
 #shopify-section-hero {
   position: relative;
+  overflow: hidden;
   background-color: #2e2e2e;
-  background-image: var(--roebux-hero-1-image);
-  background-size: cover;
-  background-position: center 35%;
-  background-repeat: no-repeat;
 }
 
-/* Premium bottom-up scrim for text legibility over imagery. */
+/* image layer (slow settle) */
+#shopify-section-hero::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  z-index: 0;
+  background: var(--roebux-hero-1-image) center 35% / cover no-repeat;
+  transform: scale(1);
+  will-change: transform;
+}
+
+/* warm bottom-weighted scrim for legibility */
 #shopify-section-hero::after {
   content: '';
   position: absolute;
   inset: 0;
+  z-index: 0;
   pointer-events: none;
   background: linear-gradient(
     to top,
-    rgb(20 16 12 / 0.78) 0%,
+    rgb(20 16 12 / 0.80) 0%,
     rgb(20 16 12 / 0.30) 45%,
-    rgb(20 16 12 / 0.45) 100%
+    rgb(20 16 12 / 0.42) 100%
   );
 }
 
-/* Keep content above the scrim and give it a calm, intentional inset. */
-#shopify-section-hero > .section,
 #shopify-section-hero .section {
   position: relative;
   z-index: 1;
-}
-
-#shopify-section-hero .section {
   min-height: 100svh;
   max-width: 1500px;
   margin-inline: auto;
@@ -198,74 +192,211 @@
   padding-inline: clamp(1.25rem, 5vw, 6rem);
 }
 
-/* Cinematic hero type. */
-#shopify-section-hero :is(h1, h2, .h1, .h2) {
-  font-size: clamp(2.5rem, 6vw, 5rem);
+#shopify-section-hero :is(h1, .h1) {
+  font-size: clamp(2.6rem, 6vw, 5rem);
   line-height: 1.04;
-  letter-spacing: -0.01em;
-  max-width: 18ch;
+  letter-spacing: -0.02em;
+  max-width: 16ch;
 }
 
-#shopify-section-hero p {
+#shopify-section-hero .text-block--hero_sub p {
   max-width: 46ch;
+  font-size: 1.0625rem;
+}
+
+@media (prefers-reduced-motion: no-preference) {
+  #shopify-section-hero::before {
+    animation: rbx-hero-settle 12s var(--rbx-ease) both;
+  }
+  @keyframes rbx-hero-settle {
+    from { transform: scale(1.06); }
+    to { transform: scale(1); }
+  }
 }
 
 /* ============================================================
- * 3. Atmospheric band (custom orders / "Hero 2") — warm gradient.
+ * 4. Brand promise + asymmetric product lines
  * ============================================================ */
 
-#shopify-section-custom_atmosphere {
-  position: relative;
-  background-color: #45372c;
-  background-image: var(--roebux-hero-2-image);
-  background-size: cover;
-  background-position: center;
-  background-repeat: no-repeat;
+#shopify-section-products .text-block--promise_line p {
+  max-width: 22ch;
+  letter-spacing: -0.01em;
+}
+#shopify-section-products .text-block--promise_sub p {
+  max-width: 52ch;
+  color: var(--roebux-warm-taupe);
 }
 
-#shopify-section-custom_atmosphere::after {
+/* product media tiles: 4:5 on clean off-white with warm soft shadow */
+.image-block--sig_media,
+.image-block--field_media {
+  position: relative;
+  width: 100%;
+  aspect-ratio: 4 / 5;
+  border-radius: 4px;
+  overflow: hidden;
+  background: var(--roebux-offwhite) center / cover no-repeat;
+  box-shadow: 0 22px 48px -28px rgb(69 55 44 / 0.55);
+}
+.image-block--sig_media { background-image: var(--roebux-img-signature-closed); }
+.image-block--field_media { background-image: var(--roebux-img-field-holder); }
+
+/* hide Horizon's stock placeholder SVG so the CSS image shows (a real uploaded
+   image would render an <img> on top and take over automatically) */
+.image-block--sig_media .placeholder-image,
+.image-block--field_media .placeholder-image {
+  visibility: hidden;
+}
+
+/* signature hover-swap: closed -> open */
+.image-block--sig_media::after {
   content: '';
   position: absolute;
   inset: 0;
-  pointer-events: none;
-  background: rgb(28 22 15 / 0.55);
+  background: var(--roebux-img-signature-open) center / cover no-repeat;
+  opacity: 0;
+  transition: opacity 0.45s ease;
 }
 
-#shopify-section-custom_atmosphere > .section,
-#shopify-section-custom_atmosphere .section {
-  position: relative;
-  z-index: 1;
+@media (hover: hover) {
+  .image-block--sig_media,
+  .image-block--field_media {
+    transition: transform 0.8s var(--rbx-ease);
+  }
+  .image-block--sig_media:hover,
+  .image-block--field_media:hover {
+    transform: scale(1.03);
+  }
+  .image-block--sig_media:hover::after {
+    opacity: 1;
+  }
 }
 
-#shopify-section-custom_atmosphere p {
-  max-width: 52ch;
+/* price + swatch detail */
+.text-block--sig_price p,
+.text-block--field_price p {
+  margin: 0;
+  font-weight: 600;
+  color: var(--roebux-brown);
+}
+
+.text-block--sig_swatches {
+  display: flex;
+  align-items: center;
+}
+.text-block--sig_swatches p {
+  margin: 0;
+  font-size: 0.82rem;
+  color: var(--roebux-warm-taupe);
+}
+/* decorative swatch strip (one olive = provisional field green) — whole card links out */
+.text-block--sig_swatches::before {
+  content: '';
+  display: inline-block;
+  width: 72px;
+  height: 12px;
+  margin-right: 10px;
+  border-radius: 2px;
+  box-shadow: inset 0 0 0 1px rgb(0 0 0 / 0.06);
+  background: linear-gradient(
+    90deg,
+    var(--roebux-accent) 0 25%,
+    var(--roebux-field-green) 25% 50%,
+    var(--roebux-brown) 50% 75%,
+    var(--roebux-sand) 75% 100%
+  );
 }
 
 /* ============================================================
- * 4. Button polish — intentional, consistent, premium.
+ * 5. Why RoeBux — dark band with radial depth
+ * ============================================================ */
+
+#shopify-section-why .section-background {
+  background-image: radial-gradient(
+    120% 90% at 50% 0%,
+    rgb(90 72 62 / 0.55) 0%,
+    rgb(69 55 44 / 0) 60%
+  );
+}
+
+/* ============================================================
+ * 6. Craft & process — engineered charcoal, hairline rules, mono numerals
+ * ============================================================ */
+
+#shopify-section-craft .color-scheme-5 {
+  --color-background: rgb(46 46 46); /* charcoal override of scheme-5 */
+  --color-background-rgb: 46 46 46;
+}
+
+#shopify-section-craft .section-content-wrapper > .group-block > .group-block-content > .group-block {
+  border-left: 1px solid rgb(203 185 148 / 0.32);
+  padding-left: 20px;
+}
+
+:is(
+  .text-block--step_1_num,
+  .text-block--step_2_num,
+  .text-block--step_3_num,
+  .text-block--step_4_num
+) p {
+  margin: 0;
+  font-family: ui-monospace, "SF Mono", "SFMono-Regular", Menlo, monospace;
+  font-size: 0.95rem;
+  letter-spacing: 0.12em;
+  color: var(--roebux-sand);
+}
+
+/* ============================================================
+ * 7. Responsible field use — quiet centered moment
+ * ============================================================ */
+
+#shopify-section-responsible .text-block--resp_note p {
+  font-size: 0.9rem;
+  color: var(--roebux-warm-taupe);
+}
+
+/* ============================================================
+ * 8. Closing -> footer continuous dark close
+ *    (footer color scheme is set to the dark brand scheme in the editor /
+ *     footer-group so the temperatures meet seamlessly)
+ * ============================================================ */
+
+footer .shopify-section:first-child .section,
+footer .shopify-section:first-child .section-background {
+  border-top: 0;
+}
+
+/* ============================================================
+ * 9. Buttons / link micro-states
  * ============================================================ */
 
 .button,
 .button-secondary {
+  border-radius: 4px;
   letter-spacing: 0.02em;
   font-weight: 600;
 }
 
 /* ============================================================
- * 5. Section rhythm — premium spacing + readable measure.
+ * 10. Scroll reveal (initial hidden state is added by JS via .rbx-reveal,
+ *     so content is always visible when JS is off or reduced-motion is set)
  * ============================================================ */
 
-/* Constrain single-column copy sections to a comfortable measure. */
-#shopify-section-promise .section,
-#shopify-section-responsible .section {
-  max-width: 60rem;
-  margin-inline: auto;
-}
+@media (prefers-reduced-motion: no-preference) {
+  .rbx-reveal > * {
+    opacity: 0;
+    transform: translateY(18px);
+    transition: opacity 0.7s var(--rbx-ease), transform 0.7s var(--rbx-ease);
+  }
+  .rbx-reveal.rbx-in > * {
+    opacity: 1;
+    transform: none;
+  }
+  .rbx-reveal.rbx-in > *:nth-child(2) { transition-delay: 0.09s; }
+  .rbx-reveal.rbx-in > *:nth-child(3) { transition-delay: 0.18s; }
+  .rbx-reveal.rbx-in > *:nth-child(4) { transition-delay: 0.27s; }
 
-/* Product-line, why and process columns: align content to the top so
-   uneven copy lengths still read as a clean grid. */
-#shopify-section-product_lines .group-block,
-#shopify-section-why .group-block,
-#shopify-section-process .group-block {
-  align-self: stretch;
+  @media (max-width: 749px) {
+    .rbx-reveal > * { transform: translateY(14px); }
+  }
 }

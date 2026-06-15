@@ -32,11 +32,13 @@
     {%- render 'theme-styles-variables' -%}
     {%- render 'color-schemes' -%}
 
-    {%- comment -%} RoeBux: expose homepage preview asset URLs as CSS variables (consumed by roebux.css). {%- endcomment -%}
+    {%- comment -%} RoeBux: expose homepage preview asset URLs as CSS variables (consumed by roebux.css). Placeholders — swap for editor-managed / native product media later. {%- endcomment -%}
     <style>
       :root {
         --roebux-hero-1-image: url("{{ 'roebux-hero-1-placeholder.jpg' | asset_url }}");
-        --roebux-hero-2-image: url("{{ 'roebux-hero-2-atmosphere.jpg' | asset_url }}");
+        --roebux-img-signature-closed: url("{{ 'roebux-signature-closed.jpg' | asset_url }}");
+        --roebux-img-signature-open: url("{{ 'roebux-signature-open.jpg' | asset_url }}");
+        --roebux-img-field-holder: url("{{ 'roebux-field-holder.jpg' | asset_url }}");
       }
     </style>
 
@@ -136,6 +138,8 @@
     <footer>
       {% sections 'footer-group' %}
     </footer>
+
+    <script src="{{ 'roebux.js' | asset_url }}" defer></script>
 
     {% render 'search-modal' %}
 
