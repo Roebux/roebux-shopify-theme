@@ -189,7 +189,9 @@
   max-width: 1500px;
   margin-inline: auto;
   width: 100%;
-  padding-inline: clamp(1.25rem, 5vw, 6rem);
+  /* left-anchored, lower composition — eased off the hard edge with a larger left inset */
+  padding-inline-start: clamp(1.5rem, 8vw, 9rem);
+  padding-inline-end: clamp(1.25rem, 5vw, 6rem);
 }
 
 #shopify-section-hero :is(h1, .h1) {
@@ -398,5 +400,38 @@ footer .shopify-section:first-child .section-background {
 
   @media (max-width: 749px) {
     .rbx-reveal > * { transform: translateY(14px); }
+  }
+}
+
+/* ============================================================
+ * 11. Header refinements
+ * ============================================================ */
+
+/* Transparent hero header: stay transparent + off-white on hover (no white fill).
+ * Scoped to the over-hero state — once scrolled (data-sticky-state="active") the
+ * header reverts to Horizon's native solid behaviour untouched. */
+.header[transparent]:not([data-sticky-state="active"]) {
+  --color-scheme-top-row: transparent !important;
+  --color-scheme-bottom-row: transparent !important;
+  --color-foreground: rgb(250 250 249) !important;
+  --color-foreground-rgb: 250 250 249 !important;
+}
+
+/* Subtle nav hover in both states: off-white text, slight opacity lift + thin
+ * underline accent — never a background fill. */
+.header .menu-list__link {
+  opacity: 0.95;
+  text-underline-offset: 4px;
+  text-decoration-thickness: 1px;
+}
+.header .menu-list__link:hover,
+.header .menu-list__link:focus-visible {
+  opacity: 1;
+  text-decoration: underline;
+}
+
+@media (prefers-reduced-motion: no-preference) {
+  .header .menu-list__link {
+    transition: opacity 0.25s ease;
   }
 }
