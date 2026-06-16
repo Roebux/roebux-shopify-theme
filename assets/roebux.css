@@ -420,6 +420,18 @@ footer .shopify-section:first-child .section-background {
   --color-foreground-rgb: 250 250 249 !important;
 }
 
+/* Belt-and-suspenders: force all header text + icons to stay off-white over the
+ * hero in every state, so hovering never darkens the whole bar. Only the hovered
+ * link gets the underline accent below. Reverts to native once scrolled (solid). */
+.header[transparent]:not([data-sticky-state="active"]) :is(
+  .menu-list__link,
+  .header__row,
+  .header-actions__action,
+  .header__icon
+) {
+  color: rgb(250 250 249) !important;
+}
+
 /* Subtle nav hover in both states: off-white text, slight opacity lift + thin
  * underline accent — never a background fill. */
 .header .menu-list__link {
