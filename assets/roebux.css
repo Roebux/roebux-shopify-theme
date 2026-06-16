@@ -186,11 +186,14 @@
   position: relative;
   z-index: 1;
   min-height: 100svh;
-  max-width: 1500px;
-  margin-inline: auto;
   width: 100%;
-  /* left-anchored, lower composition — eased off the hard edge with a larger left inset */
-  padding-inline-start: clamp(1.5rem, 8vw, 9rem);
+}
+
+/* Full-width hero content spans edge-to-edge (grid 1/-1); inset it here so the
+ * text sits off the left edge while staying left-anchored and lower. */
+#shopify-section-hero .section-content-wrapper {
+  box-sizing: border-box;
+  padding-inline-start: clamp(2rem, 9vw, 11rem);
   padding-inline-end: clamp(1.25rem, 5vw, 6rem);
 }
 
