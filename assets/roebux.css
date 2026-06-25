@@ -189,12 +189,13 @@
   width: 100%;
 }
 
-/* Full-width hero content spans edge-to-edge (grid 1/-1); inset it here so the
- * text sits off the left edge while staying left-anchored and lower. */
+/* Full-width hero content spans edge-to-edge (grid 1/-1); inset it to Horizon's
+ * page-content offset so the text's left edge lines up exactly with the page-width
+ * sections below (and the header logo) — left-anchored, lower, not centered. */
 #shopify-section-hero .section-content-wrapper {
   box-sizing: border-box;
-  padding-inline-start: clamp(2rem, 9vw, 11rem);
-  padding-inline-end: clamp(1.25rem, 5vw, 6rem);
+  padding-inline-start: var(--util-page-margin-offset);
+  padding-inline-end: var(--util-page-margin-offset);
 }
 
 #shopify-section-hero :is(h1, .h1) {
@@ -432,21 +433,23 @@ footer .shopify-section:first-child .section-background {
   color: rgb(250 250 249) !important;
 }
 
-/* Subtle nav hover in both states: off-white text, slight opacity lift + thin
- * underline accent — never a background fill. */
-.header .menu-list__link {
-  opacity: 0.95;
-  text-underline-offset: 4px;
-  text-decoration-thickness: 1px;
-}
+/* Hover/focus: the word under the cursor lights up in RoeBux orange — nav words
+ * and standalone text links (.link). Clickable buttons (.button / .button-secondary)
+ * are intentionally left untouched. Higher-specificity transparent selectors beat
+ * the over-hero off-white enforcement above so only the hovered word changes. */
 .header .menu-list__link:hover,
-.header .menu-list__link:focus-visible {
-  opacity: 1;
-  text-decoration: underline;
+.header .menu-list__link:focus-visible,
+.header[transparent]:not([data-sticky-state="active"]) .menu-list__link:hover,
+.header[transparent]:not([data-sticky-state="active"]) .menu-list__link:focus-visible,
+.link:hover,
+.link:focus-visible {
+  color: var(--roebux-accent) !important;
+  text-decoration: none;
 }
 
 @media (prefers-reduced-motion: no-preference) {
-  .header .menu-list__link {
-    transition: opacity 0.25s ease;
+  .header .menu-list__link,
+  .link {
+    transition: color 0.2s ease;
   }
 }
